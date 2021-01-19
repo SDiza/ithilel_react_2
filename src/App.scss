@@ -1,0 +1,29 @@
+.contact-book {
+    &__table {
+        border: 1px solid #95A5A6;
+        margin: 15px auto;
+        width: 500px;
+        thead {
+            background-color: #95A5A6;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        tbody {
+            text-align: center;
+        }
+    }
+    .button {
+        display: block;
+        margin: 15px auto;
+        font-size: 14px;
+        background-color: #73a67c;
+        border: 1px solid;
+        border-radius: 3px;
+        padding: 5px 15px;
+        font-weight: bold;
+        color: white;
+        &:disabled {
+            background-color: darkgrey;
+        }
+    }
+}

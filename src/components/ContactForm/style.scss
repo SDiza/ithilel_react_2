@@ -1,0 +1,14 @@
+.contact-book__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 40px;
+    border-radius: 3px;
+    input {
+        margin: 10px;
+        height: 25px;
+    }
+}
