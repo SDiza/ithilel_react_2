@@ -10,5 +10,8 @@
     input {
         margin: 10px;
         height: 25px;
+        &.not-valid {
+            border: 1px solid red;
+        }
     }
 }

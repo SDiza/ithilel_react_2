@@ -1,25 +1,43 @@
 import React from 'react';
 import './App.scss';
 import { Contact } from "./components/Contact/Contact";
-import {ContactForm} from "./components/ContactForm";
+import { ContactForm } from "./components/ContactForm";
 
 export class App extends React.Component {
     state = {
-        contacts: [
-            { name: 'John', lastname: 'Bean', phone: '+123123'},
-            { name: 'Dave', lastname: 'Gaham', phone: '+323333'},
-            { name: 'Mike', lastname: 'Wasowsky', phone: '+34123123'},
-            { name: 'Miles', lastname: 'Morales', phone: '+21334532324'},
-            { name: 'Keanu', lastname: 'Reeves', phone: '+12355555'},
-    ],
-        ShowForm: false,
-};
+        isShowForm: false,
+        contact: [{
+            name: 'John',
+            surName: 'Bean',
+            phone: '+123123'
+        },
+        {
+            name: 'Dave',
+            surName: 'Gaham',
+            phone: '+323333'
+        },
+        {
+            name: 'Mike',
+            surName: 'Wasowsky',
+            phone: '+34123123'
+        },
+        {
+            name: 'Miles',
+            surName: 'Morales',
+            phone: '+21334532324'
+        },
+        {
+            name: 'Keanu',
+            surName: 'Reeves',
+            phone: '+12355555'
+        },]
+    };
 
 render() {
-    const {ShowForm} = this.state;
-    const form = ShowForm && (
-        <ContactForm updateData={this.updateData} hideForm={this.hideForm} />
-    );
+    // const {ShowForm} = this.state;
+    // const form = ShowForm && (
+    //     <ContactForm updateData={this.updateData} addContact={this.addContact} />
+    // );
     return (
         <div className="contact-book">
             <table className='contact-book__table'>
@@ -31,34 +49,33 @@ render() {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.contacts.map(contact => (
+                    {this.state.contact.map(contact => (
                         <Contact contact={contact}  />
                     ))}
                 </tbody>
             </table>
-            <button className='button' onClick={() => this.openForm()} >Add contact</button>
-            {form}
+            <button className='button' onClick={this.toggleForm} disabled={this.state.isShowForm} >Add contact</button>
+
+            {this.state.isShowForm ?
+                <ContactForm updateData={this.updateData} addContact={this.addContact} /> :
+                null}
 
         </div>
     );
 }
-    openForm() {
+    toggleForm = () => {
         this.setState({
-            ShowForm: !this.state.ShowForm,
-        });
-    }
-    hideForm = (value) => {
-        this.setState({
-            ShowForm: value,
+            isShowForm: !this.state.isShowForm
         });
     }
 
     updateData = (value) => {
+        this.setState({ isShowForm: !value });
+    }
+    addContact = (value) => {
         this.setState({
-            contacts: [
-                ...this.state.contacts,
-                value,
-            ] })
+            contact: [...this.state.contact, value]
+        })
     }
 }
 

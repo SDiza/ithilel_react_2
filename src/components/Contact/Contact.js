@@ -5,7 +5,7 @@ export class Contact extends React.Component {
         return (
             <tr>
                 <td>{this.props.contact.name}</td>
-                <td>{this.props.contact.lastname}</td>
+                <td>{this.props.contact.surName}</td>
                 <td>{this.props.contact.phone}</td>
             </tr>
 
